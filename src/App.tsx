@@ -12,7 +12,7 @@ const todos: Array<Todo> = [
   {id: 3, description: "ToDo3", done: false}
 ];
 
-
+let lastId = 3;
 
 function App() {
   const [todosList, setTodosList] = useState<Array<Todo>>(todos);
@@ -28,8 +28,25 @@ function App() {
     );
   }
 
+  function addTodoItem(event: React.KeyboardEvent<HTMLInputElement>){
+    if(event.key === "Enter"){
+      setTodosList(
+        [
+          ...todosList, 
+          {
+            id: lastId+1, 
+            description: event.currentTarget.value, 
+            done: false
+          }
+        ]
+      );
+      lastId++;
+    }
+  }
+
   return (
     <>
+      <input type="text" onKeyDown={(event) => addTodoItem(event)}/>
       {todosList.map((todo) => {
         return (
         <div key={todo.id}>
