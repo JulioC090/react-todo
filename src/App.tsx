@@ -1,4 +1,5 @@
 import { useState } from "react";
+import EditableText from "./EditableText";
 
 type Todo = {
   id: number,
@@ -52,6 +53,23 @@ function App() {
     );
   }
 
+  function editTodoItem(todoId: number, text: string){
+    setTodosList(
+      todosList.map(todo => {
+        if(todo.id !== todoId){
+          return todo;
+        }
+        return {...todo, description: text};
+      })
+    );
+  }
+
+  function handleFinishEdit(todoId: number){
+    return (text: string)=>{
+      editTodoItem(todoId, text);
+    }
+  }
+
   return (
     <>
       <input type="text" onKeyDown={(event) => addTodoItem(event)}/>
@@ -59,7 +77,7 @@ function App() {
         return (
         <div key={todo.id}>
           <input type="checkbox" onClick={() => toggleDone(todo.id)} />
-          <span>{todo.description}</span>
+          <EditableText initialText={todo.description} onFinishEdit={handleFinishEdit(todo.id)}/>
           <span>{todo.done ? " V " : " F "}</span>
           <button onClick={() => deleteTodoItem(todo.id)}>Deletar</button>
         </div>); 
