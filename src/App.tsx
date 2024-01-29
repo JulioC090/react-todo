@@ -44,6 +44,14 @@ function App() {
     }
   }
 
+  function deleteTodoItem(todoId: number){
+    setTodosList(
+      todosList.filter((todo)=>
+        todo.id !== todoId
+      )
+    );
+  }
+
   return (
     <>
       <input type="text" onKeyDown={(event) => addTodoItem(event)}/>
@@ -52,7 +60,8 @@ function App() {
         <div key={todo.id}>
           <input type="checkbox" onClick={() => toggleDone(todo.id)} />
           <span>{todo.description}</span>
-          <span>{todo.done ? " V" : " F"}</span>
+          <span>{todo.done ? " V " : " F "}</span>
+          <button onClick={() => deleteTodoItem(todo.id)}>Deletar</button>
         </div>); 
       })}
     </>
