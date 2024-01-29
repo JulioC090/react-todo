@@ -1,5 +1,5 @@
 import { useState } from "react";
-import EditableText from "./EditableText";
+import EditableText from "./components/EditableText";
 
 type Todo = {
   id: number,
