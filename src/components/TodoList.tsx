@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Todo } from "../Todo";
 import TodoListItem from "./TodoListItem";
+import EnterActionInput from "./EnterActionInput";
 
 interface TodoListProps {
   intialTodoItens?: Array<Todo>
@@ -22,20 +23,18 @@ function TodoList({intialTodoItens}: TodoListProps){
     );
   }
 
-  function addTodoItem(event: React.KeyboardEvent<HTMLInputElement>){
-    if(event.key === "Enter"){
-      setTodosList(
-        [
-          ...todosList, 
-          {
-            id: lastId+1, 
-            description: event.currentTarget.value, 
-            done: false
-          }
-        ]
-      );
-      lastId++;
-    }
+  function addTodoItem(text: string){
+    setTodosList(
+      [
+        ...todosList, 
+        {
+          id: lastId+1, 
+          description: text, 
+          done: false
+        }
+      ]
+    );
+    lastId++;
   }
 
   function deleteTodoItem(todoId: number){
@@ -59,7 +58,7 @@ function TodoList({intialTodoItens}: TodoListProps){
 
   return (
     <div>
-      <input type="text" onKeyDown={(event) => addTodoItem(event)}/>
+      <EnterActionInput onPressEnter={(event) => addTodoItem(event.currentTarget.value)}/>
       {todosList.map((todo) => {
         return (
         <TodoListItem 

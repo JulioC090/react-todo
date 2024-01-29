@@ -1,4 +1,5 @@
 import { useState } from "react";
+import EnterActionInput from "./EnterActionInput";
 
 interface EditableTextProps  {
   initialText?: string
@@ -22,24 +23,22 @@ function EditableText({initialText, onFinishEdit}: EditableTextProps){
     if(onFinishEdit) onFinishEdit(text);
   }
 
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>){
-    if(event.key === "Enter"){
-      setIsEditing(false);
-      if(onFinishEdit) onFinishEdit(text);
-    }
+  function handlePressEnter(){
+    setIsEditing(false);
+    if(onFinishEdit) onFinishEdit(text);
   }
 
   return (
     <span onDoubleClick={handleDoubleClick}>
       {
         isEditing ? (
-          <input 
+          <EnterActionInput
             type="text" 
             value={text} 
             autoFocus
+            onPressEnter={handlePressEnter}
             onChange={(event) => handleChange(event)}
             onBlur={handleBlur}
-            onKeyDown={(event) => handleKeyDown(event)}
           />
         ) : (
           <span>{text}</span>
