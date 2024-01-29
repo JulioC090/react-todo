@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Todo } from "../Todo";
+import { Todo } from "../models/Todo";
 
 
 let lastId = 3;
