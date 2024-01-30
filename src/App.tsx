@@ -1,9 +1,10 @@
 import TodoList from "./components/TodoList";
+import Todo from "./models/Todo";
 
 const todos = [
-  {id: 1, description: "ToDo1", done: false},
-  {id: 2, description: "ToDo2", done: false},
-  {id: 3, description: "ToDo3", done: false}
+  new Todo("Todo1"),
+  new Todo("Todo2"),
+  new Todo("Todo3")
 ];
 
 function App() {

@@ -1,13 +1,10 @@
 import { useState } from "react";
-import { Todo } from "../models/Todo";
-
-
-let lastId = 3;
+import Todo  from "../models/Todo";
 
 function useTodo(intialTodoItens?: Array<Todo>){
   const [todos, setTodos] = useState<Array<Todo>>(intialTodoItens || []);
 
-  function toggleDone(todoId: number){
+  function toggleDone(todoId: string){
     setTodos(
       todos.map(todo => {
         if(todo.id !== todoId){
@@ -22,17 +19,12 @@ function useTodo(intialTodoItens?: Array<Todo>){
     setTodos(
       [
         ...todos, 
-        {
-          id: lastId+1, 
-          description: text, 
-          done: false
-        }
+        new Todo(text)
       ]
     );
-    lastId++;
   }
 
-  function deleteTodoItem(todoId: number){
+  function deleteTodoItem(todoId: string){
     setTodos(
       todos.filter((todo)=>
         todo.id !== todoId
@@ -40,7 +32,7 @@ function useTodo(intialTodoItens?: Array<Todo>){
     );
   }
 
-  function editTodoItem(todoId: number, text: string){
+  function editTodoItem(todoId: string, text: string){
     setTodos(
       todos.map(todo => {
         if(todo.id !== todoId){

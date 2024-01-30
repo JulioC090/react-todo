@@ -1,4 +1,4 @@
-import { Todo } from "../models/Todo";
+import Todo from "../models/Todo";
 import TodoListItem from "./TodoListItem";
 import EnterActionInput from "./EnterActionInput";
 import useTodo from "../hooks/useTodo";
@@ -26,7 +26,6 @@ function TodoList({intialTodoItens}: TodoListProps){
       )})}
     </div>
   );
-  
 }
 
 
