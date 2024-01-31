@@ -12,13 +12,18 @@ interface TodoListProps {
 function TodoList({intialTodoItens}: TodoListProps){
   const {todos, addTodoItem, deleteTodoItem, editTodoItem, toggleDone} = useTodo(intialTodoItens);
 
+  function handlePressEnter(event: React.KeyboardEvent<HTMLInputElement>){
+    addTodoItem(event.currentTarget.value);
+    event.currentTarget.value = "";
+  }
+
   return (
     <div className={styles["todo"]}>
       <div className={styles["todo__input-container"]}>
         <EnterActionInput
           className={styles["todo__input"]}
           placeholder="Crie um novo ToDo"
-          onPressEnter={(event) => addTodoItem(event.currentTarget.value)}
+          onPressEnter={handlePressEnter}
         />
       </div>
       <div className={styles["todo__list"]}>
