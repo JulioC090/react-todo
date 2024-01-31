@@ -2,6 +2,7 @@ import { Trash } from "@phosphor-icons/react";
 import Todo from "../../models/Todo";
 import EditableText from "../EditableText";
 import styles from "./todo-item.module.css";
+import classNames from "classnames";
 
 interface TodoListItemProps{
   todo: Todo
@@ -20,7 +21,11 @@ function TodoListItem({todo, toggleDone, deleteTodoItem, editTodoItem}: TodoList
           onClick={toggleDone} 
         />
         <EditableText
-          className={styles["todo__description"]}
+          className={
+            classNames(
+              styles["todo__description"], 
+              {[styles["todo__description--done"]]: todo.done}
+            )}
           initialText={todo.description} 
           onFinishEdit={editTodoItem}
         />

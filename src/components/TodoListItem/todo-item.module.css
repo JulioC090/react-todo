@@ -29,6 +29,11 @@
   word-break: break-all;
 }
 
+.todo__description--done{
+  color: var(--white-1);
+  text-decoration: line-through;
+}
+
 .todo__delete-button{
   background-color: transparent;
   display: flex;
