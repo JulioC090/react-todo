@@ -30,4 +30,24 @@
 .todo__list{
   background-color: var(--dark-1);
   border-radius: var(--radius);
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.todo__list::-webkit-scrollbar{
+  width: 2px;
+}
+
+.todo__list::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 16px;
+}
+
+.todo__list::-webkit-scrollbar-thumb {
+  background-color: var(--dark-2);
+  border-radius: 16px;
+}
+
+.todo__list::-webkit-scrollbar-thumb:hover {
+  background: var(--focus-color);
 }
