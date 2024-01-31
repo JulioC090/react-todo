@@ -1,7 +1,8 @@
 .todo{
   --padding: 20px;
   --radius: 4px;
-
+  display: flex;
+  flex-direction: column;
   width: 512px;
   height: 70vh;
 }
@@ -13,6 +14,7 @@
   padding: var(--padding);
   margin-bottom: 32px;
   border-radius: var(--radius);
+  flex-shrink: 0;
 }
 
 .todo__input-container:focus-within{
@@ -30,7 +32,6 @@
 .todo__list{
   background-color: var(--dark-1);
   border-radius: var(--radius);
-  max-height: 100%;
   overflow-y: auto;
 }
 
@@ -50,4 +51,21 @@
 
 .todo__list::-webkit-scrollbar-thumb:hover {
   background: var(--focus-color);
+}
+
+@media screen and (max-width: 544px){
+  .todo{
+    height: 100vh;
+    padding: 32px 16px;
+    overflow: hidden;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 544px) {
+  .todo{
+    height: 100vh;
+    width: 100vw;
+    padding: 32px;
+    overflow: hidden;
+  }
 }
