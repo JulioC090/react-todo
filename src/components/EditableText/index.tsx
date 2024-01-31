@@ -1,12 +1,13 @@
-import { useState } from "react";
-import EnterActionInput from "./EnterActionInput";
+import { HTMLAttributes, useState } from "react";
+import EnterActionInput from "../EnterActionInput";
+import styles from "./editableText.module.css";
 
-interface EditableTextProps  {
+interface EditableTextProps extends React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   initialText?: string
   onFinishEdit?(text: string): void
 }
 
-function EditableText({initialText, onFinishEdit}: EditableTextProps){
+function EditableText({initialText, onFinishEdit, ...rest}: EditableTextProps){
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(initialText ? initialText : "");
 
@@ -29,11 +30,16 @@ function EditableText({initialText, onFinishEdit}: EditableTextProps){
   }
 
   return (
-    <span onDoubleClick={handleDoubleClick}>
+    <div 
+      {...rest}
+      className={`${rest.className} ${styles["editable-text"]}`}
+      onDoubleClick={handleDoubleClick}
+    >
       {
         isEditing ? (
           <EnterActionInput
-            type="text" 
+            type="text"
+            className={styles["editable-text__input"]}
             value={text} 
             autoFocus
             onPressEnter={handlePressEnter}
@@ -41,10 +47,10 @@ function EditableText({initialText, onFinishEdit}: EditableTextProps){
             onBlur={handleBlur}
           />
         ) : (
-          <span>{text}</span>
+          <>{text}</>
         )
       }
-    </span>
+    </div>
   )
 }
 

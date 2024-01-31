@@ -1,0 +1,33 @@
+.todo{
+  --padding: 20px;
+  --radius: 4px;
+
+  width: 512px;
+  height: 70vh;
+}
+
+.todo__input-container{
+  width: 100%;
+  display: flex;
+  background-color: var(--dark-1);
+  padding: var(--padding);
+  margin-bottom: 32px;
+  border-radius: var(--radius);
+}
+
+.todo__input-container:focus-within{
+  background-color: var(--focus-backgroud-color);
+  outline: 2px solid var(--focus-color);
+}
+
+.todo__input{
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.todo__list{
+  background-color: var(--dark-1);
+  border-radius: var(--radius);
+}

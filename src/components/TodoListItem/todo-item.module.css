@@ -1,0 +1,56 @@
+.todo__item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding);
+}
+
+.todo__item:not(:last-child){
+  border-bottom: 1px solid var(--highlight-color);
+}
+
+.todo__content{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.todo__checkbox{
+  height: 24px;
+  width: 24px;
+  accent-color: var(--blue);
+  flex-shrink: 0;
+}
+
+.todo__description{
+  flex: 1;
+  margin-right: 12px;
+  word-break: break-all;
+}
+
+.todo__delete-button{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 4px;
+  border: none;
+  outline: none;
+  border-radius: 100%;
+}
+
+.todo__delete-button:hover{
+  background-color: var(--selection-color);
+}
+
+.todo__delete-button:active{
+  filter: brightness(0.8);
+  transition: 100ms;
+}
+
+.todo__delete-button > svg {
+  height: 20px;
+  width: 20px;
+  fill: var(--red);
+}

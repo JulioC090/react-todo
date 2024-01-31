@@ -1,0 +1,22 @@
+.editable-text{
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.editable-text:hover{
+  outline: 2px solid var(--focus-backgroud-color);
+}
+
+.editable-text:focus-within{
+  background-color: var(--focus-backgroud-color);
+  outline: 2px solid var(--focus-color);
+}
+
+.editable-text__input{
+  background-color: transparent;
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 16px;
+}

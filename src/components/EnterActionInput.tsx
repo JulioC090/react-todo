@@ -2,7 +2,7 @@ interface EnterActionInputProps extends React.InputHTMLAttributes<HTMLInputEleme
   onPressEnter(event: React.KeyboardEvent<HTMLInputElement>): void
 }
 
-function EnterActionInput({onPressEnter, ...rest}: EnterActionInputProps){
+function EnterActionInput ({onPressEnter, ...rest}: EnterActionInputProps){
   function handlePressEnter(event: React.KeyboardEvent<HTMLInputElement>){
     if(event.key === "Enter"){
       onPressEnter(event);
@@ -10,7 +10,11 @@ function EnterActionInput({onPressEnter, ...rest}: EnterActionInputProps){
   }
 
   return (
-    <input type="text" {...rest} onKeyDown={(event) => handlePressEnter(event)}/>
+    <input
+      {...rest} 
+      type="text" 
+      onKeyDown={(event) => handlePressEnter(event)}
+    />
   );
 }
 
