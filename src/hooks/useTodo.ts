@@ -16,6 +16,7 @@ function useTodo(intialTodoItens?: Array<Todo>){
   }
 
   function addTodoItem(text: string){
+    if(text.length < 1) return;
     setTodos(
       [
         ...todos, 
