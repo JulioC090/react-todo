@@ -1,5 +1,5 @@
 import { Trash } from "@phosphor-icons/react";
-import Todo from "../../models/Todo";
+import Todo from "../../entities/Todo";
 import EditableText from "../EditableText";
 import styles from "./todo-item.module.css";
 import classNames from "classnames";

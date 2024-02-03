@@ -1,11 +1,11 @@
 import CenteringWrapper from "../components/CenteringWrapper";
 import TodoForm from "../components/TodoForm";
-import Todo from "../models/Todo";
+import Todo from "../entities/Todo";
 
 const todos = [
-  new Todo("Todo1"),
-  new Todo("Todo2"),
-  new Todo("Todo3")
+  Todo.create("Todo1"),
+  Todo.create("Todo2"),
+  Todo.create("Todo3")
 ];
 
 

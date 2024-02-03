@@ -1,4 +1,4 @@
-import Todo from "../../models/Todo";
+import Todo from "../../entities/Todo";
 import TodoListItem from "../TodoListItem";
 
 import styles from "./todo-list.module.css";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Todo  from "../models/Todo";
+import Todo  from "../entities/Todo";
 
 function useTodo(intialTodoItens?: Array<Todo>){
   const [todos, setTodos] = useState<Array<Todo>>(intialTodoItens || []);
@@ -10,17 +10,19 @@ function useTodo(intialTodoItens?: Array<Todo>){
         if(todo.id !== todoId){
           return todo;
         }
-        return {...todo, done: !todo.done};
+        todo.toggleDone();
+        return Todo.clone(todo);
       })
     );
   }
 
   function addTodoItem(text: string){
     if(text.length < 1) return;
+    const newTodo = Todo.create(text);
     setTodos(
       [
         ...todos, 
-        new Todo(text)
+        newTodo
       ]
     );
   }
@@ -34,12 +36,14 @@ function useTodo(intialTodoItens?: Array<Todo>){
   }
 
   function editTodoItem(todoId: string, text: string){
+    if(text.length < 1) return;
     setTodos(
       todos.map(todo => {
         if(todo.id !== todoId){
           return todo;
         }
-        return {...todo, description: text};
+        todo.setDescription(text);
+        return Todo.clone(todo);
       })
     );
   }
