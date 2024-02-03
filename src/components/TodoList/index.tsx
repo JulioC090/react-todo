@@ -1,7 +1,9 @@
 import Todo from "../../models/Todo";
 import TodoListItem from "../TodoListItem";
 
-interface TodoListProps extends React.HTMLAttributes<HTMLDivElement>{
+import styles from "./todo-list.module.css";
+
+interface TodoListProps{
   todos: Array<Todo>
   toggleDone(todoId: string): void
   editTodoItem(todoId: string, text: string): void
@@ -14,11 +16,10 @@ function TodoList(
     toggleDone,
     editTodoItem,
     deleteTodoItem,
-    ...rest
   }: TodoListProps
 ){
   return (
-    <div {...rest}>
+    <div className={styles["todo__list"]}>
       {todos.map((todo) => {
         return (
         <TodoListItem 

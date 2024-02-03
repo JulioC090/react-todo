@@ -16,7 +16,6 @@ function TodoForm({intialTodoItens}: TodoFormProps){
     <div className={styles["todo"]}>
       <TodoInput addTodoItem={addTodoItem}/>
       <TodoList 
-        className={styles["todo__list"]}
         todos={todos}
         deleteTodoItem={deleteTodoItem}
         editTodoItem={editTodoItem}
