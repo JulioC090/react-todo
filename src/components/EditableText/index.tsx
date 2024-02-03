@@ -3,13 +3,12 @@ import EnterActionInput from "../EnterActionInput";
 import styles from "./editableText.module.css";
 
 interface EditableTextProps extends React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  initialText?: string
-  onFinishEdit?(text: string): void
+  text: string
+  onFinishEdit(text: string): void
 }
 
-function EditableText({initialText, onFinishEdit, ...rest}: EditableTextProps){
+function EditableText({text, onFinishEdit, ...rest}: EditableTextProps){
   const [isEditing, setIsEditing] = useState(false);
-  const [text, setText] = useState(initialText ? initialText : "");
 
   function handleDoubleClick(){
     setIsEditing(true)
@@ -17,7 +16,6 @@ function EditableText({initialText, onFinishEdit, ...rest}: EditableTextProps){
 
   function handleFinishEdit(text: string){
     setIsEditing(false);
-    setText(text);
     if(onFinishEdit) onFinishEdit(text);
   }
 

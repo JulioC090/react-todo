@@ -26,7 +26,7 @@ function TodoListItem({todo, toggleDone, deleteTodoItem, editTodoItem}: TodoList
               styles["todo__description"], 
               {[styles["todo__description--done"]]: todo.done}
             )}
-          initialText={todo.description} 
+          text={todo.description} 
           onFinishEdit={editTodoItem}
         />
       </div>
