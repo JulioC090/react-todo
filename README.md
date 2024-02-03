@@ -4,6 +4,8 @@
 
 Um aplicativo para gerenciar uma lista de tarefas, permitindo adicionar, remover e marcá-las como concluídas.
 
+Demo: https://julioc090.github.io/react-todo/
+
 ## 📕 Sumário
 - [🚀 Começando](#🚀-começando)
   - [📋 Pré-requisitos](#📋-pré-requisitos)
