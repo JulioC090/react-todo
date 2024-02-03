@@ -15,17 +15,15 @@ function EditableText({initialText, onFinishEdit, ...rest}: EditableTextProps){
     setIsEditing(true)
   }
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>){
-    setText(event.currentTarget.value);
-  }
-
-  function handleBlur(){
+  function handleBlur(text: string){
     setIsEditing(false);
+    setText(text);
     if(onFinishEdit) onFinishEdit(text);
   }
 
-  function handlePressEnter(){
+  function handlePressEnter(text: string){
     setIsEditing(false);
+    setText(text);
     if(onFinishEdit) onFinishEdit(text);
   }
 
@@ -38,13 +36,12 @@ function EditableText({initialText, onFinishEdit, ...rest}: EditableTextProps){
       {
         isEditing ? (
           <EnterActionInput
+            defaultValue={text}
             type="text"
             className={styles["editable-text__input"]}
-            value={text} 
             autoFocus
-            onPressEnter={handlePressEnter}
-            onChange={(event) => handleChange(event)}
-            onBlur={handleBlur}
+            onPressEnter={(event) => handlePressEnter(event.currentTarget.value)}
+            onBlur={(event) => handleBlur(event.currentTarget.value)}
           />
         ) : (
           <>{text}</>
