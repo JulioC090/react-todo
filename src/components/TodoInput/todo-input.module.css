@@ -1,0 +1,21 @@
+.todo__input-container{
+  width: 100%;
+  display: flex;
+  background-color: var(--dark-1);
+  padding: var(--padding);
+  margin-bottom: 32px;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.todo__input-container:focus-within{
+  background-color: var(--focus-backgroud-color);
+  outline: 2px solid var(--focus-color);
+}
+
+.todo__input{
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
