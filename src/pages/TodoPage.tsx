@@ -1,5 +1,5 @@
 import CenteringWrapper from "../components/CenteringWrapper";
-import TodoList from "../components/TodoList";
+import TodoForm from "../components/TodoForm";
 import Todo from "../models/Todo";
 
 const todos = [
@@ -12,7 +12,7 @@ const todos = [
 function TodoPage(){
   return (
     <CenteringWrapper>
-      <TodoList intialTodoItens={todos}/>
+      <TodoForm intialTodoItens={todos}/>
     </CenteringWrapper>
   );
 }
