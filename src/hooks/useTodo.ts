@@ -5,8 +5,9 @@ function useTodo(intialTodoItens?: Array<Todo>){
   const [todos, setTodos] = useState<Array<Todo>>(intialTodoItens || []);
 
   function toggleDone(todo: Todo){
-    todo.toggleDone();
     const newTodo = Todo.clone(todo);
+    newTodo.toggleDone();
+    if(!newTodo.isValid()) return;
 
     setTodos(
       todos.map(todo => {
@@ -20,8 +21,8 @@ function useTodo(intialTodoItens?: Array<Todo>){
   }
 
   function addTodoItem(text: string){
-    if(text.length < 1) return;
     const newTodo = Todo.create(text);
+    if(!newTodo.isValid()) return;
 
     setTodos(
       [
@@ -40,9 +41,9 @@ function useTodo(intialTodoItens?: Array<Todo>){
   }
 
   function editTodoItem(todo: Todo, text: string){
-    if(text.length < 1) return;
-    todo.setDescription(text);
     const editedTodo = Todo.clone(todo);
+    editedTodo.description = text;
+    if(!editedTodo.isValid()) return;
 
     setTodos(
       todos.map(todo => {

@@ -5,7 +5,7 @@ class Todo {
 
   private constructor(id: string, description: string, done: boolean){ 
     this.id = id || `todo-${Math.random().toString().slice(2, 7)}`;
-    this.setDescription(description);
+    this.description = description;
     this.done = done;
   }
 
@@ -17,13 +17,14 @@ class Todo {
     return new Todo(todo.id, todo.description, todo.done);
   }
 
-  public toggleDone(){
-    this.done = !this.done;
+  public isValid(): boolean{
+    if(this.description.length < 1) return false;
+
+    return true;
   }
 
-  public setDescription(description: string){
-    if(description.length < 1) throw new Error("Invalid description");
-    this.description = description;
+  public toggleDone(){
+    this.done = !this.done;
   }
 }
 
