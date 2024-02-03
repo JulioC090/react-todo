@@ -4,14 +4,17 @@ import Todo  from "../entities/Todo";
 function useTodo(intialTodoItens?: Array<Todo>){
   const [todos, setTodos] = useState<Array<Todo>>(intialTodoItens || []);
 
-  function toggleDone(todoId: string){
+  function toggleDone(todo: Todo){
+    todo.toggleDone();
+    const newTodo = Todo.clone(todo);
+
     setTodos(
       todos.map(todo => {
-        if(todo.id !== todoId){
+        if(todo.id !== newTodo.id){
           return todo;
         }
-        todo.toggleDone();
-        return Todo.clone(todo);
+        
+        return newTodo;
       })
     );
   }
@@ -19,6 +22,7 @@ function useTodo(intialTodoItens?: Array<Todo>){
   function addTodoItem(text: string){
     if(text.length < 1) return;
     const newTodo = Todo.create(text);
+
     setTodos(
       [
         ...todos, 
@@ -27,23 +31,26 @@ function useTodo(intialTodoItens?: Array<Todo>){
     );
   }
 
-  function deleteTodoItem(todoId: string){
+  function deleteTodoItem(deletedTodo: Todo){
     setTodos(
       todos.filter((todo)=>
-        todo.id !== todoId
+        todo.id !== deletedTodo.id
       )
     );
   }
 
-  function editTodoItem(todoId: string, text: string){
+  function editTodoItem(todo: Todo, text: string){
     if(text.length < 1) return;
+    todo.setDescription(text);
+    const editedTodo = Todo.clone(todo);
+
     setTodos(
       todos.map(todo => {
-        if(todo.id !== todoId){
+        if(todo.id !== editedTodo.id){
           return todo;
         }
-        todo.setDescription(text);
-        return Todo.clone(todo);
+
+        return editedTodo;
       })
     );
   }

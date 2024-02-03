@@ -5,9 +5,9 @@ import styles from "./todo-list.module.css";
 
 interface TodoListProps{
   todos: Array<Todo>
-  toggleDone(todoId: string): void
-  editTodoItem(todoId: string, text: string): void
-  deleteTodoItem(todoId: string): void
+  toggleDone(todo: Todo): void
+  editTodoItem(todo: Todo, text: string): void
+  deleteTodoItem(todo: Todo): void
 }
 
 function TodoList(
@@ -25,9 +25,9 @@ function TodoList(
         <TodoListItem 
           key={todo.id}
           todo={todo}
-          toggleDone={() => toggleDone(todo.id)}
-          editTodoItem={(text) => editTodoItem(todo.id, text)}
-          deleteTodoItem={() => deleteTodoItem(todo.id)}
+          toggleDone={() => toggleDone(todo)}
+          editTodoItem={(text) => editTodoItem(todo, text)}
+          deleteTodoItem={() => deleteTodoItem(todo)}
         />
       )})}
     </div>
