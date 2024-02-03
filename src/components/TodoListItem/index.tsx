@@ -18,6 +18,7 @@ function TodoListItem({todo, toggleDone, deleteTodoItem, editTodoItem}: TodoList
         <input 
           type="checkbox"
           className={styles["todo__checkbox"]}
+          defaultChecked={todo.done}
           onClick={toggleDone} 
         />
         <EditableText
