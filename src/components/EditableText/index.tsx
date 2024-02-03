@@ -15,13 +15,7 @@ function EditableText({initialText, onFinishEdit, ...rest}: EditableTextProps){
     setIsEditing(true)
   }
 
-  function handleBlur(text: string){
-    setIsEditing(false);
-    setText(text);
-    if(onFinishEdit) onFinishEdit(text);
-  }
-
-  function handlePressEnter(text: string){
+  function handleFinishEdit(text: string){
     setIsEditing(false);
     setText(text);
     if(onFinishEdit) onFinishEdit(text);
@@ -40,8 +34,8 @@ function EditableText({initialText, onFinishEdit, ...rest}: EditableTextProps){
             type="text"
             className={styles["editable-text__input"]}
             autoFocus
-            onPressEnter={(event) => handlePressEnter(event.currentTarget.value)}
-            onBlur={(event) => handleBlur(event.currentTarget.value)}
+            onPressEnter={(event) => handleFinishEdit(event.currentTarget.value)}
+            onBlur={(event) => handleFinishEdit(event.currentTarget.value)}
           />
         ) : (
           <>{text}</>
