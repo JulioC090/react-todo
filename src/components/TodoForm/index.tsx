@@ -1,16 +1,16 @@
-import Todo from "../../entities/Todo";
 import useTodo from "../../hooks/useTodo";
 import styles from "./todo.module.css";
 import TodoList from "../TodoList";
 import TodoInput from "../TodoInput";
+import TodoGateway from "../../gateways/TodoGateway";
 
 interface TodoFormProps {
-  intialTodoItens?: Array<Todo>
+  todoGateway: TodoGateway
 }
 
 
-function TodoForm({intialTodoItens}: TodoFormProps){
-  const {todos, addTodoItem, deleteTodoItem, editTodoItem, toggleDone} = useTodo(intialTodoItens);
+function TodoForm({todoGateway}: TodoFormProps){
+  const {todos, addTodoItem, deleteTodoItem, editTodoItem, toggleDone} = useTodo(todoGateway);
 
   return (
     <div className={styles["todo"]}>

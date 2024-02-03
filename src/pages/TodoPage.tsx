@@ -1,18 +1,13 @@
 import CenteringWrapper from "../components/CenteringWrapper";
 import TodoForm from "../components/TodoForm";
-import Todo from "../entities/Todo";
+import TodoMemoryGateway from "../gateways/TodoMemoryGateway";
 
-const todos = [
-  Todo.create("Todo1"),
-  Todo.create("Todo2"),
-  Todo.create("Todo3")
-];
-
+const todoMemoryGateway = new TodoMemoryGateway();
 
 function TodoPage(){
   return (
     <CenteringWrapper>
-      <TodoForm intialTodoItens={todos}/>
+      <TodoForm todoGateway={todoMemoryGateway}/>
     </CenteringWrapper>
   );
 }
