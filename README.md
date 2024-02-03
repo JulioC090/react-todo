@@ -1,5 +1,7 @@
 <h1 align="center">React ToDo List</h1>
 
+![react-todo](https://github.com/JulioC090/react-todo/assets/64113858/def8ad9c-a9ee-4c8a-9faa-269268a8dc12)
+
 Um aplicativo para gerenciar uma lista de tarefas, permitindo adicionar, remover e marcá-las como concluídas.
 
 ## 📕 Sumário
