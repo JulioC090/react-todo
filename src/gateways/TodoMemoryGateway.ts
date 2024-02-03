@@ -22,19 +22,17 @@ export default class TodoMemoryGateway implements TodoGateway{
   }
 
   editTodo(editedTodo: Todo): boolean {
-    let edited = false;
-    this.todos.forEach((todo, index) => {
-      if(todo.id === editedTodo.id){
-        this.todos[index] = editedTodo;
-        edited = true;
-      }
-    });
-    return edited;
+    const index = this.todos.findIndex((todo) => todo.id === editedTodo.id);
+    if (index === -1) return false;
+
+    this.todos[index] = editedTodo;
+    return true;
   }
 
   removeTodo(todo: Todo): boolean {
     const index = this.todos.indexOf(todo);
-    if(index < 0) return false;
+    if(index === -1) return false;
+    
     this.todos.splice(index, 1);
     return true;
   }
